@@ -6,7 +6,7 @@ export default {
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./src/**/*.{ts,tsx}"
 	],
 	prefix: "",
 	theme: {
@@ -17,8 +17,15 @@ export default {
 				'2xl': '1400px'
 			}
 		},
+		fontFamily: {
+			roboto: ['Roboto', 'sans-serif'],
+		},
 		extend: {
 			colors: {
+				teal: {
+					DEFAULT: '#00bfff',
+					500: '#00bfff',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

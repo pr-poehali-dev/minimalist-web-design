@@ -97,5 +97,15 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Roboto", sans-serif;
   }
+}
+
+:root {
+  --teal: #00bfff;
+  --black: #000000;
+  --white: #ffffff;
+  --gray-light: #f5f5f5;
+  --gray-footer: #f0f0f0;
+  --gray-border: #e0e0e0;
 }
