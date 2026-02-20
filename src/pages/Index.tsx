@@ -87,53 +87,57 @@ export default function Index() {
     <div className="min-h-screen flex flex-col bg-white" style={{ fontFamily: "Roboto, sans-serif" }}>
       {/* HEADER */}
       <header className="bg-white border-b border-[var(--gray-border)] sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-12 py-0 flex items-center justify-between" style={{ height: "64px" }}>
-          {/* Logo */}
-          <div style={{ fontSize: "36px", lineHeight: "1", color: "var(--teal)", fontWeight: 700 }}>Ф</div>
-
-          {/* Nav icons */}
-          <nav className="flex items-center gap-1">
-            {[
-              { icon: "List", label: "Темы" },
-              { icon: "BookOpen", label: "Теория" },
-              { icon: "GraduationCap", label: "Уроки" },
-              { icon: "MessageSquare", label: "Чат с ИИ" },
-              { icon: "User", label: "Аккаунт" },
-            ].map(({ icon, label }) => (
-              <button
-                key={label}
-                title={label}
-                className="flex flex-col items-center justify-center gap-1 px-4 py-2 rounded transition-all duration-200 group"
-                style={{ background: "transparent", border: "none", cursor: "pointer" }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--gray-light)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-              >
-                <Icon name={icon} size={20} color="var(--teal)" />
-                <span style={{ fontSize: "10px", color: "#555", fontWeight: 500 }}>{label}</span>
-              </button>
-            ))}
-          </nav>
-        </div>
-      </header>
-
-      {/* HERO FEATURES */}
-      <section style={{ background: "var(--gray-light)", borderBottom: "1px solid var(--gray-border)" }}>
-        <div className="max-w-6xl mx-auto px-12 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {FEATURES.map((f) => (
-              <div
-                key={f.icon}
-                className="flex flex-col items-center text-center p-8 bg-white rounded"
-                style={{ boxShadow: "0 2px 4px rgba(0,0,0,0.08)" }}
-              >
-                <Icon name={f.icon} size={52} color="var(--teal)" />
-                <p style={{ marginTop: "16px", fontWeight: 700, color: "#000", fontSize: "15px" }}>{f.title}</p>
-                <p style={{ marginTop: "4px", color: "#888", fontSize: "12px" }}>{f.label}</p>
-              </div>
-            ))}
+        {/* Video strip */}
+        <div style={{ background: "#000", height: "180px", overflow: "hidden", position: "relative" }}>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}
+          >
+            <source src="https://cdn.poehali.dev/intertnal/img/placeholder-video.mp4" type="video/mp4" />
+          </video>
+          {/* Overlay с логотипом */}
+          <div
+            className="absolute inset-0 flex items-center justify-center flex-col"
+            style={{ background: "rgba(0,0,0,0.35)" }}
+          >
+            <div style={{ fontSize: "64px", lineHeight: "1", color: "var(--teal)", fontWeight: 700 }}>Ф</div>
+            <span style={{ fontSize: "16px", fontWeight: 700, color: "#fff", letterSpacing: "0.1em", marginTop: "6px" }}>
+              Технологии будущего
+            </span>
           </div>
         </div>
-      </section>
+
+        {/* Nav bar */}
+        <div className="bg-white" style={{ borderBottom: "1px solid var(--gray-border)" }}>
+          <div className="max-w-6xl mx-auto px-12 flex items-center justify-between" style={{ height: "56px" }}>
+            <div style={{ fontSize: "20px", lineHeight: "1", color: "var(--teal)", fontWeight: 700 }}>Ф</div>
+            <nav className="flex items-center gap-1">
+              {[
+                { icon: "List", label: "Темы" },
+                { icon: "BookOpen", label: "Теория" },
+                { icon: "GraduationCap", label: "Уроки" },
+                { icon: "MessageSquare", label: "Чат с ИИ" },
+                { icon: "User", label: "Аккаунт" },
+              ].map(({ icon, label }) => (
+                <button
+                  key={label}
+                  title={label}
+                  className="flex flex-col items-center justify-center gap-1 px-4 py-2 rounded transition-all duration-200"
+                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "var(--gray-light)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                >
+                  <Icon name={icon} size={18} color="var(--teal)" />
+                  <span style={{ fontSize: "10px", color: "#555", fontWeight: 500 }}>{label}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </header>
 
       {/* CLUSTER: О НАС + ТЕМА НЕДЕЛИ */}
       <section className="max-w-6xl mx-auto px-12 py-14 w-full">
@@ -202,6 +206,27 @@ export default function Index() {
             >
               Читать →
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* BANNER AD */}
+      <section className="max-w-6xl mx-auto px-12 w-full" style={{ paddingBottom: "40px" }}>
+        <div
+          className="w-full flex items-center justify-center rounded relative overflow-hidden"
+          style={{
+            height: "120px",
+            background: "linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%)",
+            border: "2px dashed var(--gray-border)",
+            cursor: "pointer",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--teal)")}
+          onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--gray-border)")}
+        >
+          <div className="flex flex-col items-center gap-2">
+            <Icon name="Image" size={28} color="#bbb" />
+            <span style={{ fontSize: "13px", color: "#aaa", fontWeight: 500 }}>Рекламный баннер — 728×90</span>
+            <span style={{ fontSize: "11px", color: "#ccc" }}>Место для вашей рекламы</span>
           </div>
         </div>
       </section>
