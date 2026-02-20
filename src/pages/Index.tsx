@@ -87,8 +87,39 @@ export default function Index() {
     <div className="min-h-screen flex flex-col bg-white" style={{ fontFamily: "Roboto, sans-serif" }}>
       {/* HEADER */}
       <header className="bg-white border-b border-[var(--gray-border)] sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-12 flex items-center justify-between" style={{ height: "56px" }}>
-          <div style={{ fontSize: "28px", lineHeight: "1", color: "var(--teal)", fontWeight: 700 }}>Ф</div>
+        <div className="max-w-6xl mx-auto px-12 flex items-center gap-4 justify-between" style={{ height: "56px" }}>
+          <div style={{ fontSize: "28px", lineHeight: "1", color: "var(--teal)", fontWeight: 700, flexShrink: 0 }}>Ф</div>
+
+          {/* Поиск */}
+          <div className="flex-1 max-w-md relative">
+            <input
+              type="text"
+              placeholder="Поиск по темам, урокам..."
+              style={{
+                width: "100%",
+                height: "34px",
+                padding: "0 36px 0 14px",
+                fontSize: "13px",
+                border: "1px solid var(--gray-border)",
+                borderRadius: "4px",
+                outline: "none",
+                color: "#000",
+                background: "var(--gray-light)",
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.borderColor = "var(--teal)";
+                e.currentTarget.style.background = "#fff";
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.borderColor = "var(--gray-border)";
+                e.currentTarget.style.background = "var(--gray-light)";
+              }}
+            />
+            <span style={{ position: "absolute", right: "10px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+              <Icon name="Search" size={15} color="#aaa" />
+            </span>
+          </div>
+
           <nav className="flex items-center gap-1">
             {[
               { icon: "List", label: "Темы" },
