@@ -87,57 +87,86 @@ export default function Index() {
     <div className="min-h-screen flex flex-col bg-white" style={{ fontFamily: "Roboto, sans-serif" }}>
       {/* HEADER */}
       <header className="bg-white border-b border-[var(--gray-border)] sticky top-0 z-50">
-        {/* Video strip */}
-        <div style={{ background: "#000", height: "180px", overflow: "hidden", position: "relative" }}>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.7 }}
-          >
-            <source src="https://cdn.poehali.dev/intertnal/img/placeholder-video.mp4" type="video/mp4" />
-          </video>
-          {/* Overlay с логотипом */}
-          <div
-            className="absolute inset-0 flex items-center justify-center flex-col"
-            style={{ background: "rgba(0,0,0,0.35)" }}
-          >
-            <div style={{ fontSize: "64px", lineHeight: "1", color: "var(--teal)", fontWeight: 700 }}>Ф</div>
-            <span style={{ fontSize: "16px", fontWeight: 700, color: "#fff", letterSpacing: "0.1em", marginTop: "6px" }}>
-              Технологии будущего
-            </span>
-          </div>
-        </div>
-
-        {/* Nav bar */}
-        <div className="bg-white" style={{ borderBottom: "1px solid var(--gray-border)" }}>
-          <div className="max-w-6xl mx-auto px-12 flex items-center justify-between" style={{ height: "56px" }}>
-            <div style={{ fontSize: "20px", lineHeight: "1", color: "var(--teal)", fontWeight: 700 }}>Ф</div>
-            <nav className="flex items-center gap-1">
-              {[
-                { icon: "List", label: "Темы" },
-                { icon: "BookOpen", label: "Теория" },
-                { icon: "GraduationCap", label: "Уроки" },
-                { icon: "MessageSquare", label: "Чат с ИИ" },
-                { icon: "User", label: "Аккаунт" },
-              ].map(({ icon, label }) => (
-                <button
-                  key={label}
-                  title={label}
-                  className="flex flex-col items-center justify-center gap-1 px-4 py-2 rounded transition-all duration-200"
-                  style={{ background: "transparent", border: "none", cursor: "pointer" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "var(--gray-light)")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-                >
-                  <Icon name={icon} size={18} color="var(--teal)" />
-                  <span style={{ fontSize: "10px", color: "#555", fontWeight: 500 }}>{label}</span>
-                </button>
-              ))}
-            </nav>
-          </div>
+        <div className="max-w-6xl mx-auto px-12 flex items-center justify-between" style={{ height: "56px" }}>
+          <div style={{ fontSize: "28px", lineHeight: "1", color: "var(--teal)", fontWeight: 700 }}>Ф</div>
+          <nav className="flex items-center gap-1">
+            {[
+              { icon: "List", label: "Темы" },
+              { icon: "BookOpen", label: "Теория" },
+              { icon: "GraduationCap", label: "Уроки" },
+              { icon: "MessageSquare", label: "Чат с ИИ" },
+              { icon: "User", label: "Аккаунт" },
+            ].map(({ icon, label }) => (
+              <button
+                key={label}
+                title={label}
+                className="flex flex-col items-center justify-center gap-1 px-4 py-2 rounded transition-all duration-200"
+                style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--gray-light)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                <Icon name={icon} size={18} color="var(--teal)" />
+                <span style={{ fontSize: "10px", color: "#555", fontWeight: 500 }}>{label}</span>
+              </button>
+            ))}
+          </nav>
         </div>
       </header>
+
+      {/* КЛАСТЕР ВИДЕО */}
+      <section style={{ background: "var(--gray-light)", borderBottom: "1px solid var(--gray-border)" }}>
+        <div className="max-w-6xl mx-auto px-12 py-8">
+          <div className="flex items-center gap-2 mb-5">
+            <Icon name="PlayCircle" size={20} color="var(--teal)" />
+            <h2 style={{ fontSize: "16px", fontWeight: 700, color: "#000" }}>Видео</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { title: "Введение в тему", duration: "3:24" },
+              { title: "Разбор кейса", duration: "7:15" },
+              { title: "Теория на практике", duration: "5:48" },
+              { title: "Итоги недели", duration: "4:02" },
+            ].map((v, i) => (
+              <div
+                key={i}
+                className="rounded overflow-hidden cursor-pointer group"
+                style={{ border: "1px solid var(--gray-border)", background: "#fff" }}
+                onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)")}
+                onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "none")}
+              >
+                {/* Превью */}
+                <div
+                  className="relative flex items-center justify-center"
+                  style={{ height: "110px", background: "#1a1a2e" }}
+                >
+                  <div
+                    className="w-10 h-10 flex items-center justify-center rounded-full transition-transform duration-200 group-hover:scale-110"
+                    style={{ background: "var(--teal)" }}
+                  >
+                    <Icon name="Play" size={18} color="#fff" />
+                  </div>
+                  <span
+                    className="absolute bottom-2 right-2"
+                    style={{
+                      fontSize: "11px",
+                      color: "#fff",
+                      background: "rgba(0,0,0,0.6)",
+                      padding: "2px 6px",
+                      borderRadius: "3px",
+                    }}
+                  >
+                    {v.duration}
+                  </span>
+                </div>
+                {/* Подпись */}
+                <div style={{ padding: "10px 12px" }}>
+                  <p style={{ fontSize: "13px", fontWeight: 500, color: "#000", lineHeight: "1.4" }}>{v.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CLUSTER: О НАС + ТЕМА НЕДЕЛИ */}
       <section className="max-w-6xl mx-auto px-12 py-14 w-full">
